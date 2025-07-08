@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          source: "target/dormitory-management-1.0.0.jar"
+          source: "/opt/dormitory/target/dormitory-management-1.0.0.jar"
           target: "/opt/dormitory/dorm-api.jar" # ⚠️ CHANGE to your app directory
 
       - name: 5. Restart the Service
