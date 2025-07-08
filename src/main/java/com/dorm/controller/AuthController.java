@@ -19,6 +19,7 @@ public class AuthController {
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody LoginRequest request) {
         // TEMP: Hardcoded check — replace with DB check later
+        System.out.println("Login attempt: " + request.getEmail());
         if ("admin@dorm.com".equals(request.getEmail()) && "123456".equals(request.getPassword())) {
             String token = jwtUtil.generateToken(request.getEmail());
             return Map.of("token", token);
