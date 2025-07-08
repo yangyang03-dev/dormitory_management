@@ -1,0 +1,44 @@
+# This workflow deploys the Spring Boot app to your server when you push to the main branch
+name: Deploy Spring Boot App
+
+on:
+  push:
+    branches: [ "main" ] # Trigger the workflow on pushes to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # The pipeline runs on a fresh Ubuntu machine
+
+    steps:
+      - name: 1. Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: 3. Build the JAR file
+        run: mvn -B package --file pom.xml
+
+      - name: 4. Deploy to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          source: "target/*.jar"
+          target: "/opt/dormitory" # ⚠️ CHANGE to your app directory
+
+      - name: 5. Restart the Service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            sudo systemctl restart your-service-name.service
+            sudo systemctl status your-service-name.service
