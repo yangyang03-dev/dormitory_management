@@ -22,20 +22,18 @@ jobs:
       - name: 3. Build the JAR file
         run: mvn -B package --file pom.xml
 
-      - name: 4. Install SSH key
+      - name: 4. Deploy and Restart via SCP/SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-      - name: 5. scp the JAR
-        run: scp -o StrictHostKeyChecking=no \
-          -i ~/.ssh/id_rsa \
-          target/*.jar \
-          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/dormitory/dorm-api.jar
-
-      - name: 6. Restart service
-        run: ssh -o StrictHostKeyChecking=no \
-          -i ~/.ssh/id_rsa \
-          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-          "sudo systemctl restart dorm-api && sudo systemctl status dorm-api"
+            # Create a temporary file for the SSH private key
+            echo "${{ secrets.SERVER_SSH_KEY }}" > private_key
+            chmod 600 private_key
+            
+            # Deploy the JAR file using SCP
+            scp -i private_key -o StrictHostKeyChecking=accept-new \
+              target/dormitory-management-1.0.0.jar \
+              ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/dormitory/dorm-api.jar
+            
+            # Restart the systemd service using SSH
+            ssh -i private_key -o StrictHostKeyChecking=accept-new \
+              ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+              'sudo systemctl restart dorm-api'
