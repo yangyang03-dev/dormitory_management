@@ -40,5 +40,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            sudo systemctl restart your-service-name.service
-            sudo systemctl status your-service-name.service
+            sudo systemctl restart dorm-api
+            sudo systemctl status dorm-api
