@@ -29,8 +29,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          source: "target/*.jar"
-          target: "/opt/dormitory" # ⚠️ CHANGE to your app directory
+          source: "*.jar"
+          target: "/opt/dormitory/dorm-api.jar" # ⚠️ CHANGE to your app directory
 
       - name: 5. Restart the Service
         uses: appleboy/ssh-action@master
