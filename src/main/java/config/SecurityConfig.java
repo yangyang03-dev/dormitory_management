@@ -25,8 +25,8 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(Customizer.withDefaults()) // or disable if needed
-                .httpBasic(Customizer.withDefaults());
+                .formLogin(form -> form.disable())        // disable Spring login
+                .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }
