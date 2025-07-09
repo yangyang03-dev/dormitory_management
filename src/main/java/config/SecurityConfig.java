@@ -3,8 +3,8 @@ package config;
 import com.dorm.security.JwtAuthFilter;
 import com.dorm.security.JwtUtil;
 import org.springframework.context.annotation.*;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy; // <-- Import this
 import org.springframework.security.web.*;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -25,7 +25,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form -> form.disable())        // disable Spring login
+                .formLogin(form -> form.disable())
                 .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
