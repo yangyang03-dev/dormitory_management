@@ -9,6 +9,7 @@ import com.dorm.service.TicketService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,6 +38,7 @@ public class TicketController {
     }
 
     @PostMapping("/upload")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<Ticket> createTicketWithImage(
             @RequestParam UUID studentId,
             @RequestParam UUID roomId,
@@ -64,6 +66,7 @@ public class TicketController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Ticket> getAllTickets() {
         return ticketService.getAll();
     }

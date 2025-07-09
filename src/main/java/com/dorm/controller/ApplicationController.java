@@ -2,9 +2,9 @@ package com.dorm.controller;
 
 import com.dorm.model.Application;
 import com.dorm.service.ApplicationService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +19,7 @@ public class ApplicationController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Application> getAllApplications() {
         return service.getAll();
     }
@@ -29,6 +30,7 @@ public class ApplicationController {
     }
 
     @PutMapping("/{id}/status")
+    @PreAuthorize("hasRole('ADMIN')")
     public Application updateApplicationStatus(@PathVariable UUID id, @RequestParam String status) {
         return service.updateStatus(id, status);
     }
