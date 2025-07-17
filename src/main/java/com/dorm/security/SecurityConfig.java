@@ -32,6 +32,9 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll() // Allow H2 console access
                 .requestMatchers("/api/tickets/**").hasAnyRole("USER", "ADMIN")
+                    .requestMatchers("/api/checkouts/**").hasAnyRole("USER", "ADMIN")
+                    .requestMatchers("/api/students/**").hasAnyRole("ADMIN","USER")
+                    .requestMatchers("/uploads/**").permitAll()
                 .anyRequest().hasRole("ADMIN")
             )
             // For H2 console frame options

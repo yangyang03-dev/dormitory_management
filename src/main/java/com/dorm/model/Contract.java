@@ -15,11 +15,11 @@ public class Contract {
     @Id
     private UUID id;
 
-    @OneToOne
-    private Student student;
+    private UUID studentId;
 
-    @ManyToOne
-    private Room room;
+    private UUID roomId;
+
+    private String roomNumber;
 
     private String contractUrl;
 

@@ -13,7 +13,8 @@ public class Student {
 
     @Id
     private UUID id;
-
+    private String studentNumber;
+    private String roomNumber;
     private String name;
     private String email;
     private String gender;

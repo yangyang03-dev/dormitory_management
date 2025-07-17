@@ -29,9 +29,21 @@ public class ApplicationController {
         return service.create(app);
     }
 
-    @PutMapping("/{id}/status")
+    @PutMapping("/{id}/approve")
     @PreAuthorize("hasRole('ADMIN')")
-    public Application updateApplicationStatus(@PathVariable UUID id, @RequestParam String status) {
-        return service.updateStatus(id, status);
+    public void approveApplication(
+            @PathVariable UUID id,
+            @RequestParam String roomNumber
+    ) {
+        service.approveApplication(id, roomNumber);
+    }
+    @PutMapping("/{id}/reject")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void rejectApplication(@PathVariable UUID id) {
+        service.rejectApplication(id);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteApplication(@PathVariable UUID id) {
+        service.delete(id);
     }
 }

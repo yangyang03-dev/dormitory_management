@@ -15,11 +15,17 @@ public class Application {
     @Id
     private UUID id;
 
-    @ManyToOne
-    private Student student;
+    private UUID studentId; // instead of @ManyToOne Student
 
     private String preferredRoomType;
-
+    private String studentNumber;
+    private String roomNumber;
+    private String name;
+    private String email;
+    private String gender;
+    private String nationality;
+    private String major;
+    private String emergencyContact;
     private Timestamp submittedAt;
 
     private String status; // "pending", "accepted", "rejected"

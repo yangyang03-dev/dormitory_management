@@ -26,4 +26,8 @@ public class ContractController {
     public Contract createContract(@RequestBody Contract contract) {
         return service.create(contract);
     }
+    @DeleteMapping("/{id}")
+    public void deleteContract(@PathVariable UUID id) {
+        service.delete(id);
+    }
 }

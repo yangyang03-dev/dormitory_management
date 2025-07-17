@@ -15,11 +15,9 @@ public class Ticket {
     @Id
     private UUID id;
 
-    @ManyToOne
-    private Student student;
+    private UUID studentId;
 
-    @ManyToOne
-    private Room room;
+    private String roomNumber;
 
     private String description;
 

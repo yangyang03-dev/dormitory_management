@@ -12,11 +12,9 @@ import java.util.UUID;
 public class Room {
 
     @Id
-    private UUID id;
-
-    @Column(unique = true)
     private String roomNumber;
-
+    @Column(unique = true)
+    private UUID id;
     private int capacity;
 
     private String type; // e.g., "single", "double", "quiet_floor"
