@@ -1,11 +1,15 @@
 package com.dorm.controller;
 
+import com.dorm.dto.MessageDTO;
 import com.dorm.model.Message;
 import com.dorm.model.Student;
 import com.dorm.service.MessageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -62,7 +66,12 @@ public class MessageController {
         Message saved = messageService.createMessage(message);
         return ResponseEntity.ok(stripReadBy(saved));
     }
-
+    @GetMapping("/student")
+    public ResponseEntity<List<MessageDTO>> getMessagesForStudent(@AuthenticationPrincipal UserDetails user) {
+        String email = user.getUsername(); // comes from JWT
+        List<MessageDTO> messages = messageService.getAllForStudent(email);
+        return ResponseEntity.ok(messages);
+    }
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> updateMessage(@PathVariable UUID id, @RequestBody Map<String, String> payload) {
         String title = payload.get("title");
