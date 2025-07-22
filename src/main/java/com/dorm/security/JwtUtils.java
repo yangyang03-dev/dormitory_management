@@ -8,10 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -74,6 +71,14 @@ public class JwtUtils {
     }
     public List<String> extractRoles(String token) {
         Claims claims = extractAllClaims(token);
-        return claims.get("roles", List.class);
+        if (claims.get("roles") != null) {
+            return claims.get("roles", List.class);
+        } else if (claims.get("authorities") != null) {
+            return claims.get("authorities", List.class);
+        } else if (claims.get("scope") != null) {
+            return Arrays.asList(claims.get("scope", String.class).split(" "));
+        }
+
+        return Collections.emptyList();
     }
 }
