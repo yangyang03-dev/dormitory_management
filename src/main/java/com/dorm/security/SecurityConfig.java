@@ -45,10 +45,10 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/applications").permitAll()
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/h2-console/**").permitAll() // Allow H2 console access
-                .requestMatchers("/api/tickets/**").hasAnyRole("USER", "ADMIN")
+                    .requestMatchers("/api/applications").permitAll()
+                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/h2-console/**").permitAll() // Allow H2 console access
+                    .requestMatchers("/api/tickets/**").hasAnyRole("USER", "ADMIN")
                     .requestMatchers("/api/checkouts/**").hasAnyRole("USER", "ADMIN")
                     .requestMatchers("/api/students/**").hasAnyRole("ADMIN","USER")
                     .requestMatchers("/api/messages/**").hasAnyRole("ADMIN","USER")

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb675298-91db-4dd4-a9d5-e4e04d18d3e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dorm/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dorm/security/JwtAuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dorm/security/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dorm/security/JwtUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +119,7 @@
       <workItem from="1752800862852" duration="29431000" />
       <workItem from="1753005811654" duration="217000" />
       <workItem from="1753006037604" duration="4884000" />
-      <workItem from="1753158027045" duration="2031000" />
+      <workItem from="1753158027045" duration="7960000" />
     </task>
     <servers />
   </component>
