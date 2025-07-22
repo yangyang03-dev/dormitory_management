@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public List<Student> getAll() {
         return service.getAll();
     }

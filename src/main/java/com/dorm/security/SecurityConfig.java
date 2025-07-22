@@ -53,7 +53,7 @@ public class SecurityConfig {
                     .requestMatchers("/api/students/**").hasAnyRole("ADMIN","USER")
                     .requestMatchers("/api/messages/**").hasAnyRole("ADMIN","USER")
                     .requestMatchers("/uploads/**").permitAll()
-                .anyRequest().hasRole("ADMIN")
+                    .anyRequest().hasRole("ADMIN")
             )
             // For H2 console frame options
             .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
