@@ -31,7 +31,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Use the specific origin of your frontend app. Avoid "*" in production.
-        configuration.setAllowedOrigins(List.of("http://52.197.225.198"));
+        configuration.setAllowedOrigins(List.of("http://52.197.225.198","https://dorm.oeyoungisthegod.tk"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
