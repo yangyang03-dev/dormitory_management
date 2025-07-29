@@ -36,6 +36,16 @@ public class StudentService {
         student.setStatus(status);
         return repo.save(student);
     }
+    public Student update(UUID id, Student student) {
+        Student existing = repo.findById(id).orElseThrow();
+        existing.setName(student.getName());
+        existing.setEmail(student.getEmail());
+        existing.setGender(student.getGender());
+        existing.setNationality(student.getNationality());
+        existing.setMajor(student.getMajor());
+        existing.setEmergencyContact(student.getEmergencyContact());
+        return repo.save(existing);
+    }
     public Optional<Student> getByEmail(String email) {
         return repo.findByEmail(email);
     }

@@ -45,6 +45,10 @@ public class StudentController {
     public Student updateStatus(@PathVariable UUID id, @RequestParam String status) {
         return service.updateStatus(id, status);
     }
+    @PutMapping("/{id}")
+    public Student update(@PathVariable UUID id, @RequestBody Student student) {
+        return service.update(id, student);
+    }
     @DeleteMapping("/{id}")
     void delete(@PathVariable UUID id) {
         service.delete(id);

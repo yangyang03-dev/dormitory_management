@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb675298-91db-4dd4-a9d5-e4e04d18d3e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dorm/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dorm/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,8 @@
       <workItem from="1753158027045" duration="20172000" />
       <workItem from="1753346900879" duration="4809000" />
       <workItem from="1753690969705" duration="31000" />
-      <workItem from="1753698404542" duration="145000" />
+      <workItem from="1753698404542" duration="2023000" />
+      <workItem from="1753760055167" duration="2078000" />
     </task>
     <servers />
   </component>
